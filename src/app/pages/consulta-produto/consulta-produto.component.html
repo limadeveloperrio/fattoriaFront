@@ -32,7 +32,7 @@
         <tr *ngFor="let p of produtos">
           <td>{{ p.nome | uppercase}}</td>
           <td>{{ p.preco | currency: 'R$ ' }}</td>
-          <td>{{ p.quantidade }}</td>
+          <td>{{ p.quantidade | number }}</td>
           <td>{{ p.dataCadastro | date:'dd/MM/yyyy'}}</td>
           <td>
             <a class="btn btn-primary btn-sm m-x-1 my-1"

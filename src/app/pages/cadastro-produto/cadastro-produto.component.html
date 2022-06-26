@@ -30,7 +30,11 @@
         </div>
         <div class="col-md-2">
           <label>Preço</label>
-          <input type="text" class="form-control" formControlName="preco" >
+          <input type="text" class="form-control" formControlName="preco"
+          title="Você pode usar a vírgula, ela se tornará ponto para salvar"
+          mask="separator.2"
+          oninput="this.value = this.value.replace(/,/g, '.')"
+          >
           <div class="text-danger" *ngIf="form.preco.touched && form.preco.invalid">
             <div *ngIf="form.preco.errors.required">
               Por favor, informe o preço do produto.
@@ -39,7 +43,10 @@
         </div>
         <div class="col-md-2">
           <label>Quantidade</label>
-          <input type="text" class="form-control dinheiro" formControlName="quantidade" />
+          <input type="text" class="form-control dinheiro" formControlName="quantidade"
+          title="A quantidade deve ser um número interiro"
+          mask="separator.0"
+          />
           <div class="text-danger"  *ngIf="form.quantidade.touched && form.quantidade.invalid">
             <div *ngIf="form.quantidade.errors.required">
               Por favor, informe a quantidade do produto.
@@ -57,7 +64,7 @@
         <div class="col-md-12">
           <input
             type="submit"
-            value="Cadastrar Funcionário"
+            value="Cadastrar produto"
             class="btn btn-dark"
             [disabled]="!formCadastro.valid"
           />

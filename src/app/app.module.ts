@@ -1,6 +1,6 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
@@ -14,6 +14,12 @@ import { EdicaoProdutoComponent } from './pages/edicao-produto/edicao-produto.co
 import { PaginaInicialComponent } from './pages/pagina-inicial/pagina-inicial.component';
 import { FooterComponent } from './pages/footer/footer.component';
 
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+import { InputMaskModule } from '@ngneat/input-mask';
+
+registerLocaleData(ptBr);
+
 
 @NgModule({
   declarations: [
@@ -24,7 +30,6 @@ import { FooterComponent } from './pages/footer/footer.component';
     EdicaoProdutoComponent,
     FooterComponent
 
-
     ],
   imports: [
     CommonModule,
@@ -34,10 +39,14 @@ import { FooterComponent } from './pages/footer/footer.component';
     HttpClientModule,
     Ng2SearchPipeModule,
     NgxMaskModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    InputMaskModule
 
   ],
-  providers: [],
+  providers: [
+  { provide: LOCALE_ID, useValue: 'pt' },
+  { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
