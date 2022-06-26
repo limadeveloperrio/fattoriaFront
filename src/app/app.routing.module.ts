@@ -23,7 +23,7 @@ const routes: Routes = [
     },
 
     {
-    path: 'edicao-produto',
+    path: 'edicao-produto/:id',
     component: EdicaoProdutoComponent
     }
 ];

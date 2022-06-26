@@ -11,7 +11,7 @@
     <div *ngIf="mensagem_erro" class="alert alert-danger">
       Erro: <strong>{{ mensagem_erro }}</strong>
     </div>
-    <form>
+    <form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-6">
           <label>Nome do Produto:</label>
@@ -21,7 +21,7 @@
             *ngIf="form.nome.touched && form.nome.invalid"
           >
             <div *ngIf="form.nome.errors.required">
-              Por favor, informe o nome do funcionário.
+              Por favor, informe o nome do produto.
             </div>
             <div *ngIf="form.nome.errors.minlength">
               Por favor, informe no mínimo 10 caracteres.
@@ -36,11 +36,11 @@
           <input
             type="text"
             class="form-control"
-            formControlName="cpf"
+            formControlName="preco"
           />
-          <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
-            <div *ngIf="form.cpf.errors.required">
-              Por favor, informe o cpf do funcionário.
+          <div class="text-danger" *ngIf="form.preco.touched && form.preco.invalid">
+            <div *ngIf="form.preco.errors.required">
+              Por favor, informe o preço para o produto.
             </div>
           </div>
         </div>
@@ -49,14 +49,14 @@
           <input
             type="text"
             class="form-control"
-            formControlName="dataAdmissao"
+            formControlName="quantidade"
           />
           <div
             class="text-danger"
-            *ngIf="form.dataAdmissao.touched && form.dataAdmissao.invalid"
+            *ngIf="form.quantidade.touched && form.quantidade.invalid"
           >
-            <div *ngIf="form.dataAdmissao.errors.required">
-              Por favor, informe a data de admissão do funcionário.
+            <div *ngIf="form.quantidade.errors.required">
+              Por favor, informe a quantidade do produto.
             </div>
           </div>
         </div>

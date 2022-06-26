@@ -19,15 +19,24 @@ export class EdicaoProdutoComponent implements OnInit {
     private activatedRoute: ActivatedRoute
   ) { }
 
+
+  //definindo o formulário
   formEdicao = new FormGroup({
-    idEmpresa: new FormControl('', []),
-    nomeFantasia: new FormControl('', [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(150)
-    ]),
-    razaoSocial: new FormControl('', []),
-    cnpj: new FormControl('', [])
+  idProduto: new FormControl('', []),
+  //campo 'nome'
+  nome: new FormControl('', [
+  Validators.required,
+  Validators.minLength(6),
+  Validators.maxLength(150)
+  ]),
+  //campo 'preco'
+  preco: new FormControl('', [
+  Validators.required
+  ]),
+  //campo 'dataAdmissao'
+  quantidade: new FormControl('', [
+  Validators.required
+  ]),
   });
 
   get form(): any {
@@ -35,13 +44,14 @@ export class EdicaoProdutoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var idEmpresa = this.activatedRoute.snapshot.paramMap.get('id');
-    this.produtoService.getById(Number(idEmpresa)).subscribe(
+    var idProduto = this.activatedRoute.snapshot.paramMap.get('id');
+     this.produtoService.getById(Number(idProduto)).subscribe(
       (data: any) => {
-        this.formEdicao.controls['idEmpresa'].setValue(data.idEmpresa);
-        this.formEdicao.controls['nomeFantasia'].setValue(data.nomeFantasia);
-        this.formEdicao.controls['razaoSocial'].setValue(data.idEmpresa);
-        this.formEdicao.controls['cnpj'].setValue(data.idEmpresa);
+        console.log(data)
+        this.formEdicao.controls['idProduto'].setValue(data.produto.idProduto);
+        this.formEdicao.controls['nome'].setValue(data.produto.nome);
+        this.formEdicao.controls['preco'].setValue(data.produto.preco);
+        this.formEdicao.controls['quantidade'].setValue(data.produto.quantidade);
       },
       (e: any) => {
         console.log(e);

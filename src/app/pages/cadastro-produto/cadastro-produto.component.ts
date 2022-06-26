@@ -57,6 +57,7 @@ formCadastro = new FormGroup({
         }
       )
   }
+   //evento SUBMIT do formulário
   onSubmit(): void {
     this.mensagem_sucesso = '';
     this.mensagem_erro = '';
@@ -64,6 +65,8 @@ formCadastro = new FormGroup({
     this.produtoService.post(this.formCadastro.value)
       .subscribe(
         (data: any) => {
+
+          console.log(data)
           this.mensagem_sucesso = data.mensagem;
           this.formCadastro.reset();
         },
@@ -73,4 +76,5 @@ formCadastro = new FormGroup({
         }
       )
   }
+
 }
