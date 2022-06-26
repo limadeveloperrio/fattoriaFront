@@ -1,0 +1,83 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Edição de Produtos</h5>
+    <p class="card-text">
+      Preencha os campos abaixo para alterar um Produto.
+    </p>
+    <hr />
+    <div *ngIf="mensagem_sucesso" class="alert alert-success">
+      Sucesso: <strong>{{ mensagem_sucesso }}</strong>
+    </div>
+    <div *ngIf="mensagem_erro" class="alert alert-danger">
+      Erro: <strong>{{ mensagem_erro }}</strong>
+    </div>
+    <form>
+      <div class="row">
+        <div class="col-md-6">
+          <label>Nome do Produto:</label>
+          <input type="text" class="form-control" formControlName="nome" />
+          <div
+            class="text-danger"
+            *ngIf="form.nome.touched && form.nome.invalid"
+          >
+            <div *ngIf="form.nome.errors.required">
+              Por favor, informe o nome do funcionário.
+            </div>
+            <div *ngIf="form.nome.errors.minlength">
+              Por favor, informe no mínimo 10 caracteres.
+            </div>
+            <div *ngIf="form.nome.errors.maxlength">
+              Por favor, informe no máximo 150 caracteres.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label>Preço</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="cpf"
+          />
+          <div class="text-danger" *ngIf="form.cpf.touched && form.cpf.invalid">
+            <div *ngIf="form.cpf.errors.required">
+              Por favor, informe o cpf do funcionário.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label>Quantidade</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="dataAdmissao"
+          />
+          <div
+            class="text-danger"
+            *ngIf="form.dataAdmissao.touched && form.dataAdmissao.invalid"
+          >
+            <div *ngIf="form.dataAdmissao.errors.required">
+              Por favor, informe a data de admissão do funcionário.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label>Data do Cadastro</label>
+         {{dataAtual | date:'dd/MM/yyyy'}}
+
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-md-12">
+          <input
+            type="submit"
+            value="Cadastrar Funcionário"
+            class="btn btn-dark"
+            [disabled]="!formEdicao.valid"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

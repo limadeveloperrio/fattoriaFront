@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Controle de Produtos</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#conteudoNavbarSuportado"
+      aria-controls="conteudoNavbarSuportado"
+      aria-expanded="false"
+      aria-label="Alterna navegação"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"
+            >Página inicial <span class="sr-only">(página atual)</span></a
+          >
+        </li>
+
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Gerenciar produtos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="cadastro-produto"
+              >Cadastrar Produtos</a
+            >
+            <a class="dropdown-item" routerLink="consulta-produto"
+              >Consultar Produtos</a
+            >
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+  <div class="container mt-4">
+    <router-outlet></router-outlet>
+  </div>
+<footer id="rodape" class="bg-dark text-light">
+  <div class="text-center" style="background-color: #333; padding: 20px;" >
+    &copy 2022 Copyright: <a href="#">Controle de Produtos</a>
+  </div>
+</footer>
